@@ -38,6 +38,9 @@ export default {
 </script>
 
 <style>
+.movie::-webkit-scrollbar, body::-webkit-scrollbar{
+  display: none;
+}
 .movie{
   position:absolute;
   width:100%;

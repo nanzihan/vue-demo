@@ -12,7 +12,9 @@ export default new Vuex.Store({
   		{id:25,original_music:"原创榜",route:"original_music",alias:"原创榜",img:"../../static/img/original_music.jpg"},
   		{id:22,chinese_music:"华语金曲榜",route:"chinese_music",alias:"华语金曲榜",img:"../../static/img/chinese_music.jpg"}
 		],
-		musicListId:0
+		musicListId:0,
+		pics:[],
+		picIndex:0
 	},
 	getters:{
 		
@@ -20,6 +22,9 @@ export default new Vuex.Store({
 	mutations:{
 		musicListId:function(state,id){
 			state.musicListId = id
+		},
+		addPics:function(state,picArr){
+			state.pics = state.pics.concat(picArr)
 		}
 	}
 })

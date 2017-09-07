@@ -4,13 +4,11 @@
     <div id="lrcBox">
       <div :style="{top:top+'px'}" id="lrcs" v-html="lrcHtml"></div>
     </div>
-    <!-- <audio @timeupdate="timeUpdate" id="audio" controls="controls" src="./1.mp3"></audio> -->
     <audio @timeupdate="timeUpdate" id="audio" controls="controls" :src="data.data.bitrate.show_link"></audio>
   </div>
 </template>
 
 <script>
-import {lrc} from '../../static/js/lrc.js'
 export default {
   name: 'musicDetail',
   components:{
@@ -26,7 +24,8 @@ export default {
           bitrate:{
             show_link:null
           }
-        }
+        },
+        lrc:null
       },
       lrcHtml:"",
       lrcArr:[],
@@ -35,19 +34,33 @@ export default {
   },
   methods:{
     getSongSource:function(){
-       this.$http({
-        url:API_PROXY+'http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.song.play&songid=' + this.$route.params.song_id,
+      var songId = this.$route.params.song_id
+      this.$http({
+        url:API_PROXY+'http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.song.play&songid=' + songId,
         method:'get'
       }).then(function(response){
-          console.log(response.data)
+          //console.log(response.data)
           this.data.data = response.data
+        }.bind(this))
+        .catch(function(error){
+          console.log(error)
+        })
+      this.$http({
+        url:API_PROXY+'http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.song.lry&songid=' + songId,
+        method:'get'
+      }).then(function(response){
+          //console.log(response.data)
+          this.data.lrc = response.data.lrcContent
+          this.lrcHtml = ""
+          this.parseLrcHtml()
         }.bind(this))
         .catch(function(error){
           console.log(error)
         })
     },
     parseLrcHtml:function(){
-      var arr = lrc.split(/\n/),
+      if(!this.data.lrc) return
+      var arr = this.data.lrc.split(/\n/),
           i = 0,
           str=''
       for(i;i<arr.length;i++){
@@ -82,11 +95,9 @@ export default {
     }
   },
   activated:function(){
-    console.log(this.$route.params.song_id)
     this.getSongSource()
   },
   mounted:function(){
-    this.parseLrcHtml()
     this.getSongSource()
   }
 }

@@ -44,6 +44,11 @@ export default new Router({
       path: '/music/:song_id',
       name:"musicDetail",
       component:require('@/components/MusicDetail')
+    },
+    {
+      path: '/picture/:id',
+      name:"pictureDetail",
+      component:require('@/components/PictureDetail')
     }
   ]
 })
