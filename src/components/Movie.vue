@@ -47,16 +47,17 @@ export default {
   top:50px;
   bottom:50px;
   overflow-y:scroll;
+  -webkit-overflow-scrolling:touch;
 }
 .el-tabs__nav{
-  position:fixed;
+  position:fixed !important;
   top:50px;
   width:100%;
   z-index:4;
   background:white;
 }
 .el-tabs__header{
-  margin:0;
+  margin:0  !important;
 }
 .el-tabs__nav{
 	width:100%;
