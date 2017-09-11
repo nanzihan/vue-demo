@@ -1,6 +1,6 @@
 <template>
 <div class="back-header">
-  <div class="back-header-all back-header-l" @click="back">back</div>
+  <div class="back-header-all back-header-l" @click="back"><i class="el-icon-arrow-left"></i></div>
   <div class="back-header-all back-header-m">{{ title }}</div>
   <div class="back-header-all back-header-r"></div>
 </div>
@@ -25,7 +25,7 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style>
   .back-header{
     height:50px;
     background-color:#2196f3;
@@ -42,7 +42,7 @@ export default {
   }
   .back-header-l{
     text-align:left;
-    text-indent:1.5em;
+    text-indent:1em;
   }
   .back-header-m{
     text-align:center;

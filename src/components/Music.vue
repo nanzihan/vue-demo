@@ -27,14 +27,17 @@ export default {
 </script>
 
 <style scoped>
-
+.music::-webkit-scrollbar{
+  display: none;
+}
 .music{
 	position:absolute;
 	top:50px;bottom:50px;
 	width:100%;
+	overflow:scroll;
+	-webkit-overflow-scrolling:touch;
 }
 .imgages{
-	overflow-y:scroll;
 	display:flex;
 	flex-wrap:wrap;
 }

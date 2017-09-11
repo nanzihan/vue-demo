@@ -31,7 +31,7 @@ export default {
   },
   methods:{
   	handleClick:function(tab,event){
-  		console.log(tab, event);
+  		//console.log(tab, event);
   	}
   }
 }

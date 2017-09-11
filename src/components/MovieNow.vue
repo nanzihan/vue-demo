@@ -34,7 +34,7 @@ export default {
         url:API_PROXY+'https://api.douban.com/v2/movie/in_theaters',
         method:'get'
       }).then(function(response){
-          console.log(response.data.subjects)
+          //console.log(response.data.subjects)
           this.items = response.data.subjects
           if(this.items) this.loading = false
         }.bind(this))

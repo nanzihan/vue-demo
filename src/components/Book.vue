@@ -75,11 +75,15 @@ export default {
 </script>
 
 <style>
+.books::-webkit-scrollbar{
+  display: none;
+}
 .books{
 	position:absolute;
 	top:50px;bottom:50px;
 	width:100%;
   overflow-y:scroll;
+  -webkit-overflow-scrolling:touch;
 }
 .my-swipe {
   width: 100%;

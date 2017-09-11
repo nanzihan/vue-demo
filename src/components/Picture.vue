@@ -59,8 +59,16 @@ export default {
 }
 </script>
 
-<style scoped>
-.pictures::-webkit-scrollbar, body::-webkit-scrollbar{
+<style>
+.back-header-music{
+  position:fixed;
+  width:100%;
+  top:0;left:0;
+}
+.pictures::-webkit-scrollbar{
+  display: none;
+}
+.el-tab-pane::-webkit-scrollbar{
   display: none;
 }
 .pictures{
@@ -68,6 +76,11 @@ export default {
 	top:50px;bottom:50px;
 	width:100%;
   overflow-y:scroll;
+  -webkit-overflow-scrolling:touch;
+}
+.el-tab-pane{
+  overflow-y:scroll;
+  -webkit-overflow-scrolling:touch;
 }
 .pic-box{
   display: flex;
